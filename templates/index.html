@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="ka">
+<head>
+    <meta charset="UTF-8">
+    <title>ბიზნეს იდეის GPT-4o ანალიზი</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <div class="container">
+        <h1>📊 ბიზნეს იდეის ანალიზი </h1>
+        <p>შეიყვანე ტექსტურად ან ატვირთე PDF/PPTX ფაილი</p>
+
+        <!-- ტექსტური ფორმა -->
+        <form method="post">
+            <label for="text_idea"></label>
+            <textarea name="text_idea" id="text_idea" rows="5" placeholder="მაგ: მინდა შევქმნა AI პლატფორმა რომელიც..."></textarea>
+            <br>
+            <button type="submit">დავიწყე ანალიზი ტექსტზე</button>
+        </form>
+
+        <hr>
+
+        <!-- ფაილის ატვირთვა -->
+        <form method="post" enctype="multipart/form-data">
+            <label for="file">📎 ატვირთე PDF ან PowerPoint (.pptx):</label>
+            <input type="file" name="file" id="file" accept=".pdf,.pptx" required>
+            <br>
+            <button type="submit">დავიწყე ანალიზი ფაილზე</button>
+        </form>
+
+        <!-- ანალიზის შედეგის ჩარჩო -->
+        <div class="result-box">
+            <h2>🔍 ანალიზის შედეგი:</h2>
+            {% if result %}
+                <pre>{{ result }}</pre>
+            {% else %}
+                <p class="placeholder">📥 აქ გამოჩნდება შედეგი ტექსტის ან ფაილის ანალიზის შემდეგ.</p>
+            {% endif %}
+        </div>
+    </div>
+</body>
+</html>
